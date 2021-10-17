@@ -1,23 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
-import {useState} from "react";
+import Props from './component/Props';
+import React, {useState} from "react";
 
 function App() {
-  const [title, setTitle] = useState("권은지");
+    const [count, setCount] = useState(0);
 
-  function change() {
-    const newTitle = title === "권은지" ? "리액트 스터디 화이팅!" : "권은지";
-    console.log(title);
-    //document.getElementById("name").innerText = name;
-    setTitle(newTitle);
-  }
+    function Increase() {
+      setCount(count+1);
+    }
+    function Decrease() {
+      setCount(count-1);
+    }
 
-  return (
-    <div className="App">
-      <h1 id="title">{title}</h1>
-      <button onClick={change}>타이틀 바꾸기</button>
+    return (
+    <div>
+      <button OnClick={Increase}>
+        increase
+      </button>
+      <button OnClick={Decrease}>
+        decrease
+      </button>
+      <Props count={count}/>
     </div>
-  );
+    );
 }
 
 export default App;

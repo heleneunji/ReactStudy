@@ -13,10 +13,10 @@ function App() {
 
     return (
     <div>
-      <button OnClick={Increase}>
+      <button onClick={Increase}>
         increase
       </button>
-      <button OnClick={Decrease}>
+      <button onClick={Decrease}>
         decrease
       </button>
       <Props count={count}/>

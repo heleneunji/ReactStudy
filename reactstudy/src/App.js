@@ -1,26 +1,23 @@
 import Props from './component/Props';
 import React, {useState} from "react";
+import {BrowserRouter, Route, Switch, Link} from "react-router-dom";
 
 function App() {
-    const [count, setCount] = useState(0);
-
-    function Increase() {
-      setCount(count+1);
-    }
-    function Decrease() {
-      setCount(count-1);
-    }
-
     return (
-    <div>
-      <button onClick={Increase}>
-        increase
-      </button>
-      <button onClick={Decrease}>
-        decrease
-      </button>
-      <Props count={count}/>
-    </div>
+      <BrowserRouter>
+        <div>
+          <Switch>
+            <Route exact path="/">
+              <h3>This is Comp 1 page</h3>
+              <Link to ={'/a'}>link to /a</Link>
+            </Route>
+            <Route exact path="/a">
+              <h3>This is Comp 2 page</h3>
+              <Link to ={'/'}>link to /</Link>
+            </Route>
+          </Switch>
+        </div>
+      </BrowserRouter>
     );
 }
 

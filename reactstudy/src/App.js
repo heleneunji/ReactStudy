@@ -1,5 +1,5 @@
 import Props from './component/Props';
-import React, {useState} from "react";
+import React, {useState, Component, useEffect} from "react";
 import {BrowserRouter, Route, Switch, Link} from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css'
 import logo from './img/logo.png'
@@ -8,6 +8,10 @@ import part2img from './img/part2img.png'
 import img1 from './img/img1.png'
 import img2 from './img/img2.png'
 import img3 from './img/img3.png'
+import axios from 'axios'
+import Headers from './datas/Headers';
+import Slides from './datas/Slides';
+import PostForm from './component/PostForm';
 
 import { Carousel, Modal, Navbar, Container, Row, Col, Button,Alert,Breadcrumb, BreadcrumbItem, Card, Form, Nav } from 'react-bootstrap';
 
@@ -21,7 +25,7 @@ function App(){
 
   const handelModalOpen = () => {
     setShow(true);
-  };
+  };  
 
     return (
       <BrowserRouter>
@@ -30,13 +34,7 @@ function App(){
             <Navbar.Brand>
               <img src={logo} height= '40px'/>
             </Navbar.Brand>
-            <Nav>
-              <Nav.Link>강의</Nav.Link>
-              <Nav.Link>로드맵</Nav.Link>
-              <Nav.Link>멘토링</Nav.Link>
-              <Nav.Link>커뮤니티</Nav.Link>
-              <Nav.Link>인프런</Nav.Link>
-            </Nav>
+            <Headers />
             <Nav className="ml-auto">
               <Nav.Link>지식공유참여</Nav.Link>
               <Button variant="default" onClick={handelModalOpen}>로그인</Button>
@@ -49,24 +47,7 @@ function App(){
                 </Modal.Header>
                 <Modal.Body>
                   <Container>
-                  <Form>
-                    <Form.Group className="mb-3">
-                      <Form.Control placeholder = "이메일 또는 아이디 입력"/>
-                    </Form.Group>
-                    <Form.Group className="mb-3">
-                      <Form.Control placeholder = "비밀번호"/>
-                    </Form.Group>
-                    <Button variant="success" size="lg">로그인</Button>
-                    <Navbar>
-                      <Navbar.Text>
-                        <a>비밀번호 찾기</a>
-                        &nbsp;
-                        <span/>|<span/>
-                        &nbsp;
-                        <a>회원가입</a>
-                      </Navbar.Text>
-                    </Navbar>
-                  </Form>
+                    <PostForm />
                   </Container>
                 </Modal.Body>
               </Modal>
@@ -74,21 +55,9 @@ function App(){
               <Button variant="danger">회원가입</Button>
             </Nav>
           </Navbar>
-          <Carousel>
-            <Carousel.Item>
-              <img src={img1} />
-            </Carousel.Item>
-            <Carousel.Item>
-              <img src={img2} />
-            </Carousel.Item>
-            <Carousel.Item>
-              <img src={img3} />
-            </Carousel.Item>
-          </Carousel>
+          <Slides/>
         <Container fluid>
-          <header>
-            
-          </header>
+          
           <Button variant="default">나의 최근 학습 강의 </Button>
           <Row>
           <Col>
